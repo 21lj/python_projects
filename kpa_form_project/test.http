@@ -1,0 +1,19 @@
+POST http://localhost:8000/api/forms/wheel-specifications
+Content-Type: application/json
+
+{
+  "formNumber": "WHEEL-2025-001",
+  "submittedBy": "user_id_123",
+  "submittedDate": "2025-07-03",
+  "fields": {
+    "treadDiameterNew": "915 (900-1000)",
+    "lastShopIssueSize": "837 (800-900)",
+    "condemningDia": "825 (800-900)",
+    "wheelGauge": "1600 (+2,-1)"
+  }
+}
+
+
+
+
+GET http://localhost:8000/api/forms/wheel-specifications?formNumber=WHEEL-2025-001&submittedBy=user_id_123&submittedDate=2025-07-03
