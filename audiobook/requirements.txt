@@ -1,5 +1,5 @@
 streamlit
 pyttsx3
-PyPDF2>=3.0.0
+PyPDF2
 tempfile
 base64
