@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/edit-S-profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Edit Profile</h1>
+
+        {% if theater.image %}
+            <div class="current-image">
+                <p>Current Profile Picture</p>
+                <img src="{{ theater.image.url }}" alt="Current Profile Picture" id="currentProfilePic">
+            </div>
+        {% endif %}
+
+        <form method="POST" id="editProfileForm" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" value="{{ theater.theater_name }}">
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input readonly type="text" id="location" name="location" value="{{ loc.location }}">
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="tel" id="contact" name="contact" value="{{ theater.contact }}">
+            </div>
+
+            <div class="form-group">
+                <label for="about">About</label>
+                <textarea id="about" name="about" rows="4">{{ theater.about }}</textarea>
+            </div>
+    
+            <div class="form-group">
+                <label for="image">Profile Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+{% endblock %}

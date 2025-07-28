@@ -1,0 +1,89 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}User - Profile{% endblock %}
+
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'css/userpfp.css' %}" />
+<link rel="stylesheet" href="{% static 'css/userhomcss.css' %}" />
+
+{% block extra_js %}
+    <script src="{% static 'js/userpfp.js' %}"></script>
+    {% endblock %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="containerd">
+        <div class="header">
+            <div class="profile">
+                {% if curentUser.image %}
+                <img alt="user"  src="{{ curentUser.image.url }}" />
+                {% else %}
+                <img alt="user"  src="{% static 'images/default_pic.jpeg' %}" />
+                {% endif %}
+                <div class="info">
+                    <h2>{{curentUser.fname}} {{curentUser.lname}}</h2>
+                    <p>online</p>
+                </div>
+            </div>
+            <div class="actions">
+                {% url 'bmsUsers:editProfile' as edit %}
+                <button onclick="location.href='{{ edit }}'" class="icon-button">
+                    <i class="fas fa-pen"></i>
+                </button>
+                
+            </div>
+        </div>
+        <div class="info-section">
+            <div>
+                <p>+91 {{curentUser.phone}}</p>
+                <p>Mobile</p>
+            </div>
+            <div>
+                <p>@ {{user.username}}</p>
+                <!-- <i class="fas fa-qrcode"></i> -->
+            </div>
+            <div>
+                {% url 'bmsUsers:logout' as logoutUrl %}
+                <button class="ib" onclick="location.href='{{ logoutUrl }}'">
+                    <i class=" fas fa-sign-out-alt text-danger"> Logout</i>
+                </button>
+            </div>
+        </div>
+        <div class="tabs">
+            <div class="active" id="posts-tab" onclick="showPosts()">BookMyShow</div>
+            <div id="archived-posts-tab" onclick="showArchivedPosts()">Aqua Voyage</div>
+        </div>
+        <div class="posts" id="posts">
+            <div>
+                <img src="https://logodix.com/logo/2010918.png" alt="bookMyShow" height="200px" />
+                <a href="">Here..</a>
+            </div>
+            
+        </div>
+        <div class="archived-posts" id="archived-posts">
+            <div>
+                <img src="https://png.pngtree.com/png-clipart/20240516/original/pngtree-alappuzha-houseboats-kerala-silhouette-free-png-image_15108041.png" alt="aqua Voyage" height="200px" />
+                <a href="">Here..</a>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    {% include './footer.html' %}
+
+    {% endblock %}
+    
+    
+
+
+
+
+
+
+
+
+

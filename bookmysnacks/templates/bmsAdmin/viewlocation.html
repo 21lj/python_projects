@@ -1,0 +1,40 @@
+
+<h1>Location View</h1>
+
+{% if messages %}
+    <ul class="VC-messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<table class="VC-category-table">
+    <thead>
+        <tr>
+            <th>Location ID</th>
+            <th>Location Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in locations %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.location }}</td>
+            <td>
+                <a href="#" class="VC-btn VC-btn-edit">Edit</a>
+                <form action=""  method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="VC-btn VC-btn-delete" onclick="return confirm('Are you sure you want to delete this category?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No Locations available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

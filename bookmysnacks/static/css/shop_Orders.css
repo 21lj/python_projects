@@ -1,0 +1,34 @@
+.VM-th-container {
+    background-color: #121212; /* Dark background */
+    color: white; /* White text */
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Padding for the container */
+}
+.VM-th-heading {
+    color: #ffffff; /* White headings */
+}
+.VM-th-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.VM-th-header, .VM-th-cell {
+    padding: 10px;
+    text-align: left;
+}
+.VM-th-header {
+    background-color: #1e1e1e; /* Slightly lighter background for headers */
+}
+.VM-th-row:nth-child(even) {
+    background-color: #2a2a2a; /* Zebra striping for rows */
+}
+.VM-th-row:hover {
+    background-color: #333; /* Highlight on hover */
+}
+.VM-th-link {
+    color: #1e90ff; /* Link color */
+    text-decoration: none;
+}
+.VM-th-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

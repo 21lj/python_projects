@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header i {
+    font-size: 1.5em;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    border: none;
+    background: none;
+    color: #fff;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: #aaa;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    flex: 1 1 calc(25% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.card .info {
+    margin-top: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+.card .info .rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.card .info .rating i {
+    color: #f0a500;
+    margin-right: 5px;
+}
+
+.card .info .price {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #f0a500;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 10px; /* Spacing above buttons */
+}
+
+.add-to-cart, .buy-now {
+    background-color: #f0a500; /* Button background color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for buttons */
+    color: #000; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s, transform 0.2s; /* Smooth background change and scale */
+    flex: 1; /* Equal width for both buttons */
+    margin-right: 10px; /* Spacing between buttons */
+}
+
+.add-to-cart:hover {
+    background-color: #e09e00; /* Darken on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.buy-now {
+    background-color: #007bff; /* Different color for buy button */
+    color: #fff; /* White text for buy button */
+}
+
+.buy-now:hover {
+    background-color: #0056b3; /* Darken on hover for buy button */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Remove margin for the last button */
+.button-container .buy-now {
+    margin-right: 0; /* Remove margin for the last button */
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer i {
+    color: #f0a500;
+    font-size: 1.5em;
+}

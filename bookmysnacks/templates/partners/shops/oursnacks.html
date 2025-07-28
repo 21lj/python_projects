@@ -1,0 +1,55 @@
+
+
+<div class="snacks-view-container">
+    <h2 class="snacks-view-title">Snack List</h2>
+
+    {% if messages %}
+    <ul class="messages" id="message-list">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    <table class="snacks-view-table">
+        <thead>
+            <tr class="snacks-view-header-row">
+                <th class="snacks-view-header">#</th>
+                <th class="snacks-view-header">Snack Name</th>
+                <th class="snacks-view-header">Category</th>
+                <th class="snacks-view-header">Price</th>
+                <th class="snacks-view-header">Image</th>
+                <th class="snacks-view-header">Description</th>
+                <th class="snacks-view-header">Availability</th>
+                <th class="snacks-view-header">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="snacks-view-body">
+            {% for snack in snacks %}
+            <tr class="snacks-view-row">
+                <td class="snacks-view-snack-id">{{ snack.id }}</td>
+                <td class="snacks-view-snack-name">{{ snack.snack_name }}</td>
+                <td class="snacks-view-category">{{ snack.category_id.category_name }}</td>
+                <td class="snacks-view-price">{{ snack.price }}</td>
+                <td class="snacks-view-image"><img src="{{ snack.image.url }}" width="50"></td>
+                <td class="snacks-view-description">
+                    {% if snack.description %}
+                    <p>Available</p>
+                    {% else %}
+                    <p>Not Available</p>
+                    {% endif %}
+                </td>
+                <td class="snacks-view-availability">{{ snack.availability|yesno:"Yes,No" }}</td>
+                <td class="snacks-view-actions">
+                    <a href="{% url 'partners:editSnacks' snack.id %}" class="btn btn-primary">Edit</a>
+                    <form action="{% url 'partners:deleteSnacks' snack.id %}"  method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+

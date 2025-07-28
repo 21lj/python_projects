@@ -1,0 +1,14 @@
+
+
+<div class="addcat-container">
+    <h1 class="addcat-title">Add Location</h1>
+    <form method="post" class="addcat-form">
+        {% csrf_token %}
+        <div class="addcat-form-group">
+            <label for="LocationName" class="addcat-label">Location Name:</label>
+            <input type="text" id="LocationName" name="LocationName" class="addcat-form-control" required>
+        </div>
+        <button type="submit" class="addcat-btn addcat-btn-primary">Submit</button>
+    </form>
+</div>
+

@@ -1,0 +1,42 @@
+{% load static %}
+
+<h1 class="msg-page-title">Manage Your Orders</h1>
+
+{% if orders_data %}
+    {% for data in orders_data %}
+        <div class="msg-order-card">
+            <div class="msg-order-row">
+                <div class="msg-user">
+                    <img src="{% if data.user.image.url %}{{ data.user.image.url }}{% else %}{% static 'images/default_pic.jpeg' %}{% endif %}" alt="Profile Picture" class="msg-user-img" />
+                    <div class="msg-user-name">
+                        <p>{{ data.user.fname }} {{ data.user.lname }}</p>
+                        <small>Customer</small>
+                    </div>
+                </div>
+
+                <div class="msg-details">
+                    <p><strong>Order ID:</strong> {{ data.order.unique_order_id }}</p>
+                    <p><strong>Total:</strong> ₹{{ data.order.total_price }}</p>
+                    <p><strong>Status:</strong> <span class="msg-status">{{ data.order.order_status }}</span></p>
+                    <p><strong>Payment:</strong> {{ data.order.payment.payment_method }}</p>
+                </div>
+
+                <div class="msg-actions">
+                    <a href="{% url 'partners:accept-order' data.order.id %}" class="msg-btn msg-btn-success">Accept</a>
+                    <a href="{% url 'partners:reject-order' data.order.id %}" class="msg-btn msg-btn-danger">Reject</a>
+                </div>
+            </div>
+
+            <div class="msg-snacks">
+                <h4>Snacks Ordered:</h4>
+                <ul>
+                    {% for snack in data.snacks %}
+                        <li>{{ snack.snack_name }} - {{ snack.quantity }} × ₹{{ snack.price }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="msg-empty">No Orders yet...</p>
+{% endif %}

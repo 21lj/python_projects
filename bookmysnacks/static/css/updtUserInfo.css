@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+.upf-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.upf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.upf-header i {
+    font-size: 20px;
+}
+.upf-profile {
+    text-align: center;
+    margin-top: 20px;
+}
+.upf-profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.upf-profile h2 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+.upf-profile p {
+    margin: 0;
+    color: #00aaff;
+}
+.upf-bio {
+    background-color: #2a3948;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+.upf-bio p {
+    margin: 0;
+    color: #b0b0b0;
+}
+.upf-info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #2a3948;
+}
+.upf-info-item:last-child {
+    border-bottom: none;
+}
+.upf-info-item i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.upf-info-item input,
+.upf-info-item input[type="file"] {
+    background-color: #2a3948;
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-left: 10px;
+}
+.upf-info-item input::placeholder {
+    color: #b0b0b0;
+}
+.upf-update-button {
+    background-color: #00aaff;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.upf-update-button:hover {
+    background-color: #008ecc;
+}

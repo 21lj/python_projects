@@ -1,0 +1,64 @@
+<div class="VM-th-container">
+    <h1 class="VM-th-heading">Orders Here!</h1>
+
+    {% if messages %}
+        <h2 class="VM-th-heading">Messages:</h2>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if orders %}
+        <h2 class="VM-th-heading">Order History</h2>
+        <table class="VM-th-table">
+            <tr class="VM-th-header">
+                <th class="VM-th-header">Order ID</th>
+                <th class="VM-th-header">User</th>
+                <th class="VM-th-header">Total Price</th>
+                <th class="VM-th-header">Status</th>
+                <th class="VM-th-header">Placed On</th>
+                <th class="VM-th-header">Details</th>
+            </tr>
+            {% for order, items in order_items %}
+            <tr class="VM-th-row">
+                <td class="VM-th-cell">{{ order.unique_order_id }}</td>
+                <td class="VM-th-cell">{{ order.user.fname }} {{ order.user.lname }}</td>
+                <td class="VM-th-cell">₹{{ order.total_price }}</td>
+                <td class="VM-th-cell">{{ order.order_status }}</td>
+                <td class="VM-th-cell">{{ order.created_at }}</td>
+                <td class="VM-th-cell">
+                    <a class="VM-th-link" data-toggle="modal" data-target="#orderModal-{{ order.id }}">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p class="VM-th-cell">No orders found.</p>
+    {% endif %}
+</div>
+
+{% for order, items in order_items %}
+<div class="modal fade" id="orderModal-{{ order.id }}" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel-{{ order.id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel-{{ order.id }}">Order Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Items</h3>
+                {% for item in items %}
+                    <p class="text-dark">Item: {{ item.snack.snack_name }}, price {{item.snack.price}} X {{item.quantity}}</p>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

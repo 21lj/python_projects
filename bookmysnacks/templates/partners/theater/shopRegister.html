@@ -1,0 +1,51 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/registerShop.css' %}">
+
+
+<div class="rms-container">
+    <h2>Register a New Shop</h2>
+
+    {% if messages %}
+        <ul class="rms-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="rms-form-group">
+            <label for="shop_name">Shop Name:</label>
+            <input type="text" id="shop_name" name="shop_name" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="rms-form-group">
+            <label for="shop_image">Shop Image:</label>
+            <input type="file" id="shop_image" name="shop_image" accept="image/*" required>
+        </div>
+    
+        <button type="submit">Register Shop</button>
+    </form>
+    
+</div>

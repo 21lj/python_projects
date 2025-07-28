@@ -1,0 +1,62 @@
+{% load static %}
+
+{% block title %}Shop Revenue{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Shop Revenue Overview</h1>
+
+<div class="summary mb-4">
+    <p><strong>Total Revenue:</strong> ₹{{ total_revenue }}</p>
+    <p><strong>Total Items Sold:</strong> {{ total_items_sold }}</p>
+</div>
+
+<h2 class="mb-3">Items Sold:</h2>
+<ul class="list-group">
+    {% if snack_stats|length > 0 %}
+        {% for snack in snack_stats %}
+            <li class="list-group-item d-flex justify-content-between align-items-center" 
+                data-bs-toggle="modal" 
+                data-bs-target="#snackModal{{ forloop.counter }}">
+                <div>
+                    <p class="mb-1"><strong>Snack:</strong> {{ snack.snack_name }}</p>
+                    <p class="mb-0"><strong>Items Sold:</strong> {{ snack.items_sold }}</p>
+                </div>
+                <span class="badge bg-success fs-6">₹{{ snack.revenue }}</span>
+            </li>
+
+            
+<div class="modal fade" id="snackModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="snackModalLabel{{ forloop.counter }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Buyers of {{ snack.snack_name }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                {% if snack.buyers %}
+                    <ul class="list-group">
+                        {% for buyer in snack.buyers %}
+                        <li class="list-group-item">
+                            {{ buyer.order__user__login__username }} (<a href="mailto:{{ buyer.order__user__email }}">{{ buyer.order__user__email }}</a>)
+                        </li>                                         
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No buyers yet.</p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+    {% else %}
+        <li class="list-group-item text-center text-muted">No orders have been placed yet.</li>
+    {% endif %}
+</ul>
+{% endblock %}

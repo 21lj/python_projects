@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}BookMySnacks - Partners{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h2 class="mb-4">Login</h2>
+        
+        {% if error_message %}
+            <div class="alert alert-danger">{{ error_message }}</div>
+        {% endif %}
+        
+        <div class="mb-4">
+            <h5>Select your role as our Partner</h5>
+            <a href="{% url 'partners:login' %}">
+                <input type="button" class="btn btn-primary mx-2" value="Login as Theater" />
+            </a>
+            <a href="{% url 'partners:shopLogin' %}">
+                <input type="button" class="btn btn-secondary mx-2" value="Login as Shop" />
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    body {
+        background-color: #343a40; /* Dark background */
+        color: white; /* Text color */
+    }
+</style>
+{% endblock %}

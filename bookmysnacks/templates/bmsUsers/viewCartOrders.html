@@ -1,0 +1,40 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}My Cart{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/my-orders.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/updtCss.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+
+<h3>My Cart <i class="fas fa-shopping-cart"></i></h3>
+<h1>Order ID: <b>{{ order_uid }}</b></h1>
+
+{% if cart_items %}
+<div class="mc-cart-container">
+    {% for item in cart_items %}
+    <div class="mc-cart-card">
+        <div class="mc-cart-header">{{ item.snack_name }}</div>
+        <img src="{{ item.image.url }}" alt="{{ item.snack_name }}" class="mc-cart-image" />
+        <div class="mc-cart-info"><strong>Quantity:</strong> {{ item.quantity }}</div>
+        <div class="mc-cart-info"><strong>Price:</strong> ₹{{ item.price }}</div>
+        <div class="mc-cart-info"><strong>Subtotal:</strong> ₹{{ item.subtotal }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<p class="mc-total-price"><strong>Total Price:</strong> ₹{{ total_price }}</p>
+<a href="{% url 'bmsUsers:myorders' %}" class="mc-back-link"><i class="fas fa-arrow-left"></i> Back to Orders</a>
+
+{% else %}
+<p class="mc-empty-message">Your cart is empty.</p>
+{% endif %}
+
+{% include './footer.html' %}
+
+{% endblock %}

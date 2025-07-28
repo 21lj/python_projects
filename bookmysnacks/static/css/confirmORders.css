@@ -1,0 +1,205 @@
+
+        body {
+            background-color: #333;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .OC-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #222;
+            border-radius: 8px;
+        }
+
+        .OC-header {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #28d07a;
+        }
+
+        h2 {
+            margin-top: 1rem;
+            color: #f0f0f0;
+        }
+
+        .OC-table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+            background-color: #222;
+            color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .OC-table th, .OC-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+
+        .OC-table th {
+            background-color: #111;
+            color: #28d07a;
+        }
+
+        .OC-table td {
+            color: #f1f1f1;
+        }
+
+        .OC-total-amount {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #28d07a;
+            margin-top: 1rem;
+        }
+
+        .OC-payment-form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .OC-label {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+
+        .OC-select {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .OC-button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background-color: #28d07a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .OC-button:hover {
+            background-color: #20b569;
+        }
+
+       
+        .msg-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #222;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .msg-header {
+            color: #28d07a;
+            margin-bottom: 1rem;
+        }
+
+        .msg-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .msg-status {
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+        }
+
+        .msg-status p {
+            margin: 0.5rem 0;
+        }
+
+        .msg-buttons {
+            margin-top: 2rem;
+        }
+
+        .msg-buttons a {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .msg-btn-primary {
+            background-color: #28d07a;
+        }
+
+        .msg-btn-primary:hover {
+            background-color: #20b569;
+        }
+
+        .msg-btn-secondary {
+            background-color: #444;
+        }
+
+        .msg-btn-secondary:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 768px) {
+            .OC-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .OC-table th, .OC-table td {
+                padding: 0.8rem;
+                text-align: left;
+            }
+
+            .OC-table th {
+                font-size: 1rem;
+            }
+
+            .OC-table td {
+                font-size: 0.9rem;
+            }
+
+            .OC-total-amount {
+                font-size: 1.2rem;
+            }
+
+            .OC-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.6rem;
+            }
+            .msg-container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .msg-header {
+                font-size: 1.8rem;
+            }
+
+            .msg-status p {
+                font-size: 1rem;
+            }
+
+            .msg-buttons a {
+                font-size: 1rem;
+                padding: 0.8rem 1.6rem;
+            }
+        }
