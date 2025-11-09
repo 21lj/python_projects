@@ -3,6 +3,7 @@ import axios from "axios";
 import './App.css';
 
 function App() {
+  const API_URL = process.env.FAST_API_URL;
   const [file, setFile] = useState(null);
   const [columns, setColumns] = useState([]);
   const [selectedCol, setSelectedCol] = useState("");
@@ -23,14 +24,14 @@ function App() {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:8000/upload_csv", formData, {
+      const res = await axios.post(`${API_URL}/upload_csv`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      const sem_overall_grades_res = await axios.get("http://localhost:8000/overall_summary");
-      const summaryRes = await axios.get("http://localhost:8000/gradesummary_full");
-      const gradeRes = await axios.get("http://localhost:8000/grades");
-      const topper = await axios.get("http://localhost:8000/class_topper");
+      const sem_overall_grades_res = await axios.get(`${API_URL}/overall_summary`);
+      const summaryRes = await axios.get(`${API_URL}/gradesummary_full`);
+      const gradeRes = await axios.get(`${API_URL}/grades`);
+      const topper = await axios.get(`${API_URL}/class_topper`);
 
       setGradeSummaryFull(summaryRes.data.summary || []);
       setGrades(sem_overall_grades_res.data.grades || []);
@@ -50,7 +51,7 @@ function App() {
     setSelectedVal("");
     setCount(null);
     try {
-      const res = await axios.get(`http://localhost:8000/unique/${col}`);
+      const res = await axios.get(`${API_URL}/unique/${col}`);
       setUniqueValues(res.data.unique_values || []);
     } catch (err) {
       console.error(err);
@@ -62,7 +63,7 @@ function App() {
     setSelectedVal(val);
     try {
       const res = await axios.get(
-        `http://localhost:8000/count/${selectedCol}/${encodeURIComponent(val)}`
+        `${API_URL}/count/${selectedCol}/${encodeURIComponent(val)}`
       );
       setCount(res.data.count);
     } catch (err) {
