@@ -8,7 +8,6 @@ app = FastAPI()
 
 origins = [
     "https://demo-analysis4sumi.onrender.com",  
-    "http://localhost:3000",
 ]
 app.add_middleware(
     CORSMiddleware,
