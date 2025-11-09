@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/editsnackspg.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="asnK-container">
+    <h2 class="asnK-title">Edit Snack</h2>
+    <form method="POST" enctype="multipart/form-data" class="asnK-form">
+        {% csrf_token %}
+        
+        <label for="category" class="asnK-category-label">Category:</label>
+        <select name="category_id" id="category" class="asnK-category-select">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == snack.category_id.id %}selected{% endif %}>
+                    {{ category.category_name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <input type="hidden" name="shop_id" value="{{ request.user.shop.id }}" class="asnK-shop-id">
+        
+        <label for="snack_name" class="asnK-snack-name-label">Snack Name:</label>
+        <input value="{{ snack.snack_name }}" type="text" name="snack_name" id="snack_name" required class="asnK-snack-name-input">
+        
+        <label for="price" class="asnK-price-label">Price:</label>
+        <input value="{{ snack.price }}" type="number" name="price" id="price" required class="asnK-price-input">
+        
+        <label for="image" class="asnK-image-label">Current Image:</label>
+        <img src="{{ snack.image.url }}" width="80" alt="Current Image">
+        <label for="image-upload" class="asnK-image-upload-label">Upload New Image:</label>
+        <input type="file" name="image" id="image-upload" class="asnK-image-input">
+        
+        <label for="description" class="asnK-description-label">Description:</label>
+        <input value="{{ snack.description }}" type="text" name="description" id="description" required class="asnK-description-input">
+        
+        <label for="availability" class="asnK-availability-label">Available:</label>
+        <input type="checkbox" name="availability" id="availability" {% if snack.availability %}checked{% endif %} class="asnK-availability-input">
+        
+        <button type="submit" class="asnK-submit-button">Update Snack</button>
+    </form>
+</div>
+{% endblock %}

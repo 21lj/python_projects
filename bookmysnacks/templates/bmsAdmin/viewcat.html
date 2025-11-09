@@ -1,0 +1,40 @@
+
+<h1>Category View</h1>
+
+{% if messages %}
+    <ul class="VC-messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<table class="VC-category-table">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.category_name }}</td>
+            <td>
+                <a href="{% url 'bmsAdmin:editCategory' category.id %}" class="VC-btn VC-btn-edit">Edit</a>
+                <form action="{% url 'bmsAdmin:deleteCategory' category.id %}"  method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="VC-btn VC-btn-delete" onclick="return confirm('Are you sure you want to delete this category?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No categories available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

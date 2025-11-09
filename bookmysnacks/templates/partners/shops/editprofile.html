@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/edit-S-profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Edit Profile</h1>
+
+        {% if shop.shop_image %}
+            <div class="current-image">
+                <p>Current Profile Picture</p>
+                <img src="{{ shop.shop_image.url }}" alt="Current Profile Picture" id="currentProfilePic">
+            </div>
+        {% endif %}
+
+        <form method="POST" id="editProfileForm" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" value="{{ shop.shop_name }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ shop.email }}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" value="{{ shop.phone }}">
+            </div>
+    
+            <div class="form-group">
+                <label for="image">Profile Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+{% endblock %}

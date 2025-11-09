@@ -1,0 +1,27 @@
+.summary {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: white; /* Updated for white text */
+}
+
+.revenue-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.revenue-card {
+    width: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #1e1e1e; /* Updated for dark card background */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Light shadow for contrast */
+    color: white; /* Updated for white text */
+    transition: 0.3s;
+}
+
+.revenue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Slightly stronger shadow on hover */
+}

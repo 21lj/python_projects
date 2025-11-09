@@ -1,0 +1,126 @@
+.snacks-view-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #121212; 
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white; 
+}
+
+.snacks-view-title {
+    text-align: center;
+    color: #ffffff; 
+    margin-bottom: 20px;
+}
+
+.snacks-view-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.snacks-view-header-row {
+    background-color: #1e1e1e; 
+    color: white;
+}
+
+.snacks-view-header {
+    padding: 12px;
+    text-align: left;
+}
+
+.snacks-view-body {
+    background-color: #2a2a2a; 
+}
+
+.snacks-view-row {
+    border-bottom: 1px solid #444; 
+}
+
+.snacks-view-row:hover {
+    background-color: #333; 
+}
+
+.snacks-view-snack-name,
+.snacks-view-category,
+.snacks-view-price,
+.snacks-view-description,
+.snacks-view-availability {
+    padding: 10px;
+}
+
+.snacks-view-actions{
+    display: flex;
+}
+
+.asnK-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121212; 
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.asnK-title {
+    text-align: center;
+    color: #ffffff; 
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.asnK-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.asnK-category-label,
+.asnK-snack-name-label,
+.asnK-price-label,
+.asnK-image-label,
+.asnK-description-label,
+.asnK-availability-label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff; 
+}
+
+.asnK-category-select,
+.asnK-snack-name-input,
+.asnK-price-input,
+.asnK-image-input,
+.asnK-description-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #2a2a2a; 
+    color: #ffffff;
+}
+
+.asnK-availability-input {
+    margin-bottom: 20px;
+}
+
+.asnK-submit-button {
+    padding: 10px;
+    background-color: #3e27d2; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.asnK-submit-button:hover {
+    background-color: #27178d; 
+}
+
+label {
+    color: white; 
+    font-size: 14px;
+}
+
+

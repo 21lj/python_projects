@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Partner - Theater{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admin-log.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-form">
+    
+    
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="theater_name" placeholder="Theater Full Name" required aria-label="Theater_name">
+
+            <input type="text" name="username" placeholder="Enter Short form of Theater" required aria-label="Username">
+            
+            <input type="password" name="password" placeholder="Password" required aria-label="Password">
+            
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required aria-label="Confirm Password">
+            
+            
+            <select name="location">
+                <option value="" disabled selected>-- Select Location --</option>
+                {% for location in locations %}
+                <option value="{{ location.id }}">{{ location.location }}</option>
+                {% endfor %}
+            </select>
+            
+            <textarea name="about" placeholder="About" required aria-label="About"></textarea>
+            
+            <input type="text" name="contact" placeholder="Contact" required aria-label="Contact">
+
+            <input type="file" name="image" required aria-label="Image">
+            
+            <input type="submit" value="Register">
+            
+            <a href="{% url 'partners:login' %}">
+                <p>Login</p>
+            </a>
+        </form>
+    </div>
+    
+</div>
+<script src="{% static 'js/theater-log.js' %}" ></script>
+
+{% endblock %}

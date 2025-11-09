@@ -1,0 +1,60 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}Shop - {{ shop.shop_name }}{% endblock %}
+
+{% block extra_head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/userhomcss.css' %}">
+    <link rel="stylesheet" href="{% static 'css/updtCss.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <span><i class="fas fa-map-marker-alt"></i> {{ shop.shop_name }}</span>
+            <i class="fas fa-heart"></i>
+        </div>
+
+        <div class="search-bar">
+            <i class="fas fa-search" style="color: #ccc;"></i>
+            <input type="text" placeholder="Search...">
+        </div>
+
+        <div class="card-container">
+            {% for j in snacks %}
+                <div class="card">
+                    <a href="{% url 'bmsUsers:getSnacks' j.id %}">
+                        <img src="{{ j.image.url }}" alt="{{ j.snack_name }}">
+                        <div class="info">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <h3 style="margin: 0.3rem 0; font-size: 1rem;">{{ j.snack_name }}</h3>
+                            <div class="price">₹ {{ j.price }}</div>
+                        </div>
+                    </a>
+                    <div class="info">
+                        {% if j.availability %}
+                            <div class="button-container">
+                                {% url 'bmsUsers:add2cart' j.id as add2cartUrl %}
+                                <button class="btn btn-outline-success" onclick="location.href='{{ add2cartUrl }}'">
+                                    <i class="fas fa-plus"></i> Cart
+                                </button>
+                                {% url 'bmsUsers:buyNow' j.id as buy_now_url %}
+                                <button class="btn btn-success" onclick="location.href='{{ buy_now_url }}'">
+                                    <i class="fas fa-shopping-cart"></i> Buy
+                                </button>
+                            </div>
+                        {% else %}
+                            <p class="unavailable">Currently unavailable</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include './footer.html' %}
+{% endblock %}

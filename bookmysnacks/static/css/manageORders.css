@@ -1,0 +1,121 @@
+.msg-page-title {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.msg-order-card {
+    background-color: #2e2e2e;
+    color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 1000px;
+    transition: transform 0.2s ease;
+}
+
+.msg-order-card:hover {
+    transform: translateY(-3px);
+}
+
+.msg-order-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.msg-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.msg-user-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.msg-user-name p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.msg-user-name small {
+    color: #bbb;
+}
+
+.msg-details p {
+    margin: 6px 0;
+}
+
+.msg-status {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.msg-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.msg-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.msg-btn-success {
+    background-color: #28a745;
+}
+
+.msg-btn-danger {
+    background-color: #dc3545;
+}
+
+.msg-btn:hover {
+    opacity: 0.9;
+}
+
+.msg-snacks {
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid #555;
+}
+
+.msg-snacks ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.msg-empty {
+    text-align: center;
+    color: #ccc;
+}
+
+@media screen and (min-width: 992px) {
+    .msg-order-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .msg-details {
+        flex: 1;
+        padding-left: 40px;
+    }
+
+    .msg-actions {
+        justify-content: flex-end;
+        align-items: center;
+    }
+}

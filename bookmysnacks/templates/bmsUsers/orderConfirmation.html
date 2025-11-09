@@ -1,0 +1,65 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}Payment{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/confirmORders.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/userhomcss.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">BookMySnacks</h1>
+
+<div class="OC-container">
+    <h1 class="OC-header">Make Payment for Your Order</h1>
+
+    <h2>Ordered Snacks</h2>
+    <table class="OC-table">
+        <tr>
+            <th>Snack</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+
+        {% if order_items %}
+            <!-- Loop for cart purchases -->
+            {% for item in order_items %}
+        <tr>
+            <td>{{ item.snack.snack_name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>₹{{ item.subtotal }}</td>  
+        </tr>
+        {% endfor %}
+        {% else %}
+            <!-- Single purchase -->
+            <tr>
+                <td>{{ snack.snack_name }}</td>
+                <td>{{ quantity }}</td>
+                <td>₹{{ snack.price }}</td>
+                <td>₹{{ total_price }}</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <p class="OC-total-amount"><strong>Total Amount:</strong> ₹{{ total_price }}</p>
+
+    <form method="post" class="OC-payment-form">
+        {% csrf_token %}
+        <label for="payment_method" class="OC-label">Select Payment Method:</label>
+        <select name="payment_method" class="OC-select">
+            <option value="UPI">UPI</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Paytm">Paytm</option>
+            <option value="Net Banking">Net Banking</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+
+        <button type="submit" class="OC-button">Pay Now</button>
+    </form>
+</div>
+{% endblock %}

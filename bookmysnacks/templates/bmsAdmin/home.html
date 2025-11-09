@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Super User Panel{% endblock %}
+
+{% block extra_head %}
+
+  <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/viewcat.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/addcat.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/usersView1.css' %}">
+
+  {% endblock %}
+
+  {% block content %}
+  
+  <div class="MContainer">
+    <div class="sidebar">
+      <div>
+        <img alt="Logo" src="{% static 'images/bms-logo.png' %}">
+        <h1>Super User Panel</h1>
+        <ul>
+
+          <li><a class="{% if active_page == 'dashboard' %}active{% endif %}" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+          <li><a class="{% if active_page == 'addCat' %}active{% endif %}" href="{% url 'bmsAdmin:addCategory' %}"><i class="far fa-plus-square"></i>Add Categories</a></li>
+          <li><a class="{% if active_page == 'addLoc' %}active{% endif %}" href="{% url 'bmsAdmin:addLoc' %}"><i class="fas fa-map-marked-alt"></i>Add Locations</a></li>
+          <li><a class="{% if active_page == 'viewCat' %}active{% endif %}" href="{% url 'bmsAdmin:viewCategory' %}"><i class="fas fa-border-none"></i>View Categories</a></li>
+          <li><a class="{% if active_page == 'viewLoc' %}active{% endif %}" href="{% url 'bmsAdmin:viewLoc' %}"><i class="fas fa-map-marker-alt"></i>View Locations</a></li>
+          <li><a class="{% if active_page == 'table' %}active{% endif %}" href="#"><i class="fas fa-table"></i>Table</a></li>
+          <li><a class="{% if active_page == 'table' %}active{% endif %}" href="{% url 'bmsAdmin:viewTheater' %}"><i class="fas fa-theater-masks"></i>View Theaters</a></li>
+          <li><a class="{% if active_page == 'users' %}active{% endif %}" href="{% url 'bmsAdmin:viewUsers' %}"><i class="fas fa-eye"></i>Users</a></li>
+          
+        </ul>
+      </div>
+      <div class="logout-section">
+        <a href="{% url 'bmsAdmin:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </div>
+    </div>
+
+    <div class="main-content bg-black h-100">
+      <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span>&gt;</span>
+        <a href="#" id="current-page">{{ active_page|title }}</a>
+      </div>
+      <h1 class="dashboard-title" id="page-title">{{ active_page|title }}</h1>
+
+      <!-- Dynamic Content -->
+      <div id="content">
+        {% if active_page == 'addCat' %}
+        <div class="card" id="add-cat-content">
+          <h2>Add Category</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./addcat.html" %}
+
+        </div>
+        {% elif active_page == 'viewCat' %}
+        <div class="card" id="manage-cat-content">
+          <h2>Add Category</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./viewcat.html" %}
+
+        </div>
+
+        {% elif active_page == 'addLoc' %}
+        <div class="card" id="addLoc-content">
+          <h2>Add Locations</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./addlocation.html" %}
+
+        </div>
+
+        {% elif active_page == 'viewLoc' %}
+        <div class="card" id="viewLoc-content">
+          <h2>View Locations</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./viewlocation.html" %}
+
+        </div>
+
+        {% elif active_page == 'users' %}
+        <div class="card" id="users-content">
+          <h2>Our Users</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./viewUsers.html" %}
+
+        </div>
+
+        {% elif active_page == 'theaters' %}
+        <div class="card" id="theater-content">
+          <h2>Partner Theaters</h2>
+          <p>Active Page: {{ active_page }}</p>
+          {% include "./viewTheaters.html" %}
+
+        </div>
+
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block extra_scripts %}
+
+  <script src="{% static 'js/common4home.js' %}"></script>
+
+  {% endblock %}

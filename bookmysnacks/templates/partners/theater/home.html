@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Theater Dashboard{% endblock %}
+
+{% block extra_head %}
+
+  <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <style>
+    body, #content, .main-content{
+      background-color: #000000;
+    }
+  </style>
+
+  {% endblock %}
+
+  {% block content %}
+  
+  <div class="MContainer">
+    <div class="sidebar">
+      <div>
+        <img alt="Logo" src="{% static 'images/bms-logo.png' %}">
+        <h1>Theater Admin Panel</h1>
+        <ul>
+          <li><a class="{% if active_page == 'dashboard' %}active{% endif %}" href="{% url 'partners:home' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+          <li><a class="{% if active_page == 'profile' %}active{% endif %}" href="{% url 'partners:profile' %}"><i class="fas fa-user"></i>Profile</a></li>
+          <li><a class="{% if active_page == 'register_shop' %}active{% endif %}" href="{% url 'partners:createmyshop' %}"><i class="fas fa-user"></i>Register my Shops</a></li>
+          <li><a class="{% if active_page == 'manage' %}active{% endif %}" href="{% url 'partners:manageShops' %}"><i class="fas fa-cog"></i>Manage</a></li>
+          <li><a class="{% if active_page == 'contact' %}active{% endif %}" href="{% url 'partners:contact' %}"><i class="fas fa-address-book"></i>Contact</a></li>
+          <li><a class="{% if active_page == 'revenue' %}active{% endif %}" href="{% url 'partners:trevenue' %}"><i class="fas fa-chart-line"></i>Revenue</a></li>
+        </ul>
+      </div>
+      <div class="logout-section">
+        <a href="{% url 'partners:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span>&gt;</span>
+        <a href="#" id="current-page">{{ active_page|title }}</a>
+      </div>
+      <h1 class="dashboard-title" id="page-title">{{ active_page|title }}</h1>
+
+      <!-- Dynamic Content -->
+      <div id="content">
+        {% if active_page == 'register_shop' %}
+          <div class="card" id="register-shop-content">
+            <h2>Register</h2>
+            
+            {% include "./shopRegister.html" %}
+
+          </div>
+
+        {% elif active_page == 'manage' %}
+          <div class="card" id="manage-content">
+            <h2>Manage Shops</h2>
+            {% include "./manageShops.html" %}
+          </div>
+
+          {% elif active_page == 'dashboard' %}
+          <div class="card" id="dashboard-content">
+            {% include "./dashboard.html" %}
+          </div>
+
+          {% elif active_page == 'profile' %}
+          <div class="card" id="profile-content">
+            <h2>My Profile</h2>
+            {% include "./profile.html" %}
+          </div>
+
+          {% elif active_page == 'contact' %}
+          <div class="card" id="contact">
+            <h2>Contact Shops</h2>
+            {% include "./contact.html" %}
+          </div>
+
+          {% elif active_page == 'revenue' %}
+          <div class="card" id="rev-content">
+            {% include "./listRev.html" %}
+          </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block extra_scripts %}
+  
+  <script src="{% static 'js/common4home.js' %}"></script>
+  
+  {% endblock %}
+
+ 
+

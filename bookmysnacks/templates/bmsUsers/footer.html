@@ -1,0 +1,14 @@
+<div class="footer">
+    <a href="{% url 'bmsUsers:home' request.session.theaterLoggedByUser %}">
+        <i title="home" class="fas fa-home"></i>
+    </a>
+    <a href="{% url 'bmsUsers:cart' %}">
+        <i class="fas fa-shopping-bag"></i>
+    </a>
+    <a href="{% url 'bmsUsers:myorders' %}">
+        <i title="my orders" class="fas fa-box"></i>
+    </a>
+    <a href="{% url 'bmsUsers:profile' %}">
+        <i title="profile" class="fas fa-user"></i>
+    </a>
+</div>

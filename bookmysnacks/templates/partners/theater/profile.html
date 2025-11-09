@@ -1,0 +1,27 @@
+
+
+
+
+<div class="profile-container">
+    <h2 class="profile-title">Theater Profile</h2>
+
+    <div class="profile-card">
+        <div class="profile-picture">
+            <img src="{{ tuser.image.url }}" alt="Profile Picture" class="profile-img">
+        </div>
+
+        <div class="profile-details">
+            <h3 class="profile-name">Theater Name: {{ tuser.theater_name }}</h3>
+            <h3 class="profile-name">Username: {{ user.username }}</h3>
+            <p class="profile-email">Email: {{ tuser.contact }}</p>
+            <p class="profile-phone">Location: {{ loc.location }}</p>
+            <p class="profile-bio">Bio: {{ tuser.about }}</p>
+        </div>
+    </div>
+
+    <div class="profile-actions">
+        <a href="{% url 'partners:editProfile' %}" class="btn btn-primary">Edit Profile</a>
+        
+    </div>
+</div>
+

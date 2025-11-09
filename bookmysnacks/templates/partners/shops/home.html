@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Snacks Counter Dashboard{% endblock %}
+
+{% block extra_head %}
+
+  <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/stylereve.css' %}">
+  <link rel="stylesheet" href="{% static 'css/shop_Orders.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ourSnacks.css' %}">
+  <link rel="stylesheet" href="{% static 'css/manageORders.css' %}">
+  
+
+  {% endblock %}
+
+  {% block content %}
+
+  <div class="MContainer">
+    <div class="sidebar">
+      <div>
+        <img alt="Logo" src="{% static 'images/bms-logo.png' %}">
+        <h1>Snacks Admin Panel</h1>
+        <ul>
+          <li><a class="{% if active_page == 'profile' %}active{% endif %}" href="{% url 'partners:shopProfile' %}"><i class="fas fa-user"></i>Profile</a></li>
+          <li><a class="{% if active_page == 'add_snacks' %}active{% endif %}" href="{% url 'partners:addSnacks' %}"><i class="fas fa-plus"></i>Add Snacks</a></li>
+          <li><a class="{% if active_page == 'manage' %}active{% endif %}" href="{% url 'partners:manageSnacks' %}"><i class="fas fa-cog"></i>Manage Snacks</a></li>
+          
+
+          <li><a class="{% if active_page == 'manage-orders' %}active{% endif %}" href="{% url 'partners:manage-orders' %}"><i class="fas fa-tasks"></i>Manage Orders</a></li>
+          <li><a class="{% if active_page == 'view-orders' %}active{% endif %}" href="{% url 'partners:view-orders' %}"><i class="fas fa-eye"></i>View Orders</a></li>
+
+          <li><a class="{% if active_page == 'revenue' %}active{% endif %}" href="{% url 'partners:revenue' %}"><i class="fas fa-chart-line"></i>Revenue</a></li>
+        </ul>
+      </div>
+      <div class="logout-section">
+        <a href="{% url 'partners:shopLogout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span>&gt;</span>
+        <a href="#" id="current-page">{{ active_page|title }}</a>
+      </div>
+      <h1 class="dashboard-title" id="page-title">{{ active_page|title }}</h1>
+
+      <!-- Dynamic Content -->
+      <div id="content">
+        {% if active_page == 'add_snacks' %}
+          <div class="card" id="register-snacks-content">
+            <h2>Add Snacks Here..</h2>
+            <p>Active Page: {{ active_page }}</p>
+            {% include "./newsnacks.html" %}
+
+          </div>
+
+        {% elif active_page == 'manage' %}
+          <div class="card" id="manage-content">
+            <h2>Manage Snacks</h2>
+            {% include "./oursnacks.html" %}
+          </div>
+
+          {% elif active_page == 'profile' %}
+          <div class="card" id="profile-content">
+            <h2>My Profile</h2>
+            {% include "./profile.html" %}
+          </div>
+
+          {% elif active_page == 'manage-orders' %}
+          <div class="card" id="manage-orders-content">
+            <h2>Manage Orders</h2>
+            {% include "./manage-orders.html" %}
+          </div>
+
+          {% elif active_page == 'view-orders' %}
+          <div class="card" id="view-orders-content">
+            <h2>Orders</h2>
+            {% include "./vieworders.html" %}
+          </div>
+
+          {% elif active_page == 'revenue' %}
+          <div class="card" id="revenue-content">
+            <h2>Revenue</h2>
+            {% include "./revenue.html" %}
+          </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block extra_scripts %}
+
+  <script src="{% static 'js/common4home.js' %}"></script>
+  <script src="{% static 'js/message-pop.js' %}"></script>
+
+  {% endblock %}

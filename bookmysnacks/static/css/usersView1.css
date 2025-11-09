@@ -1,0 +1,22 @@
+.UD-table {
+    width: 80%; 
+    margin: 20px auto; 
+    border-collapse: collapse; 
+    background-color: #121212; 
+    color: #ffffff; 
+}
+.UD-table th, .UD-table td {
+    padding: 12px;
+    text-align: left; 
+    border: 1px solid #444; 
+}
+.UD-table th {
+    background-color: #1e1e1e; 
+    color: #ffffff; 
+}
+.UD-table tr:nth-child(even) {
+    background-color: #292929; 
+}
+.UD-table tr:hover {
+    background-color: #333; 
+}

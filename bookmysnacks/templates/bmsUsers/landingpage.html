@@ -1,0 +1,50 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'css/landingPage.css' %}" />
+
+
+{% endblock %}
+
+
+{% block content %}
+<!-- Dark theme container with a class -->
+<div class="dark-theme">
+    <img class="logo" src="{% static 'images/bms-logo.png' %}" alt="bmsLogo" />
+    <h1>Welcome, {{ user.username }}</h1>
+    <a href="{% url 'bmsUsers:logout' %}" class="logout-btn">LogOut</a>
+
+    {% if locations %}
+    <form method="post" class="location-form">
+        {% csrf_token %}
+        <label for="location_id" class="form-label"><i class="fas fa-location-arrow"></i> Locations</label>
+        <select name="location_id" id="location_id" onchange="this.form.submit()" class="form-select">
+            <option value="" disabled selected>--Select your City--</option>
+            {% for i in locations %}
+                <option value="{{ i.id }}">{{ i.location }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    {% endif %}
+
+    {% if theaters %}
+    <h2 class="theater-title">Theater Available:</h2>
+    <form method="get" name="tc" class="theater-form">
+        <select name="theaters" id="theaters-dropdown" onchange="this.form.submit()" class="form-select">
+            <option value="" disabled selected>--Select the Theater--</option>
+            {% for j in theaters %}
+                <option value="{{ j.id }}">{{ j.theater_name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    
+    {% else %}
+    <p class="text-danger">No Theaters available for the selected Location.</p>
+    
+    {% endif %}
+    <a href="{% url 'bmsUsers:page1' %}" class="btn btn-secondary mt-3">Back</a>
+</div>
+
+{% endblock %}
+

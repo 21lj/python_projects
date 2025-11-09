@@ -1,0 +1,47 @@
+{% load static %}
+{% block title %}Theater Snack Revenue{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-light">
+    <h2 class="mb-4 text-center">Snack Revenue - {{ theater.theater_name }}</h2>
+
+    <div class="row">
+        {% for snack in snacks %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 bg-dark text-white border border-secondary shadow" 
+                 role="button" data-bs-toggle="modal" data-bs-target="#snackModal{{ forloop.counter }}">
+                <div class="card-body">
+                    <h5 class="card-title text-info">{{ snack.snack_name }}</h5>
+                    <p class="card-text">
+                        <span class="d-block"><strong>Sold:</strong> {{ snack.total_quantity }}</span>
+                        <span class="d-block"><strong>Revenue:</strong> ₹{{ snack.total_revenue }}</span>
+                    </p>
+                    <span class="badge bg-info text-dark">Click for details</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snack Detail Modal -->
+        <div class="modal fade" id="snackModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="snackModalLabel{{ forloop.counter }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title text-info">{{ snack.snack_name }} Details</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="../../../media/{{ snack.image }}" class="img-fluid rounded mb-3 border" alt="{{ snack.snack_name }}" style="max-height: 250px;">
+                        <p><strong>Shop:</strong> {{ snack.shop_name }}</p>
+                        <p><strong>Total Sold:</strong> {{ snack.total_quantity }}</p>
+                        <p><strong>Total Revenue:</strong> ₹{{ snack.total_revenue }}</p>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

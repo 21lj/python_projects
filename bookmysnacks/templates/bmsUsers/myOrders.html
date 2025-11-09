@@ -1,0 +1,43 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/userhomcss.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/updtCss.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+
+<h1>My Orders</h1>
+
+{% if order_info %}
+<div class="mo-order-container">
+    {% for order in order_info %}
+    <div class="mo-order-card">
+        <div class="mo-order-header">Order ID: {{ order.order_uid }}</div>
+        <div class="mo-order-info"><strong>Snack:</strong> {{ order.snack_name }}</div>
+        {% if not order.is_cart %}
+        <div class="mo-order-info"><strong>Quantity:</strong> {{ order.quantity }}</div>
+        {% endif %}
+        <div class="mo-order-info"><strong>Price:</strong> ₹{{ order.price }}</div>
+        <div class="mo-order-info"><strong>Status:</strong> {{ order.order_status }}</div>
+
+        {% if order.is_cart %}
+        <div class="mo-order-actions">
+            <a href="{% url 'bmsUsers:viewCart' order.order_id %}" class="mo-view-btn">
+                <i class="fas fa-shopping-cart"></i> View Cart Details
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="mo-no-orders">No orders yet...</p>
+{% endif %}
+
+{% include './footer.html' %}
+{% endblock %}

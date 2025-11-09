@@ -1,0 +1,39 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block title %}Confirm Order{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/confirmORders.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+<div class="msg-container">
+    <h1 class="msg-header">Order Confirmed!</h1>
+    <p class="msg-text">Thank you for your purchase, <strong>{{ order.user.fname }}</strong>!</p>
+    <p class="msg-text"><strong>Order ID:</strong> {{ order.unique_order_id }}</p>
+    <p class="msg-text"><strong>Total Price:</strong> ₹{{ order.total_price }}</p>
+    <p class="msg-text"><strong>Payment Status:</strong> {{ order.payment_status }}</p>
+    <p class="msg-text"><strong>Order Status:</strong> {{ order.order_status }}</p>
+
+    <div class="msg-status">
+        {% if order.order_status == "Pending" %}
+            <p>Your order is awaiting confirmation from the shop.</p>
+        {% elif order.order_status == "Processing" %}
+            <p>Your order will be accepted and is being prepared!</p>
+        {% elif order.order_status == "Completed" %}
+            <p>Your order has been delivered. Enjoy your snacks!</p>
+        {% elif order.order_status == "Cancelled" %}
+            <p>Unfortunately, your order was cancelled.</p>
+        {% endif %}
+    </div>
+
+    <div class="msg-buttons">
+        <a href="{% url 'bmsUsers:myorders' %}" class="msg-btn msg-btn-primary">View Orders</a>
+        <a href="{% url 'bmsUsers:home' request.session.theaterLoggedByUser %}" class="msg-btn msg-btn-secondary">Go to Home</a>
+    </div>
+</div>
+{% include './footer.html' %}
+{% endblock %}

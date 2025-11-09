@@ -1,0 +1,149 @@
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .containerd {
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .header .info {
+            margin-left: 10px;
+        }
+        .header .info h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .header .info p {
+            margin: 0;
+            color: #00ff00;
+        }
+        .header .actions {
+            display: flex;
+            align-items: center;
+        }
+        .header .actions button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+        }
+        .header .actions i {
+            margin-left: 15px;
+            font-size: 20px;
+        }
+        .info-section {
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .info-section div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        .info-section div:last-child {
+            border-bottom: none;
+        }
+        .info-section div p {
+            margin: 0;
+        }
+        .info-section div p:first-child {
+            color: #00bcd4;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            border-bottom: 1px solid #333;
+        }
+        .tabs div {
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .tabs .active {
+            color: #00bcd4;
+            border-bottom: 2px solid #00bcd4;
+        }
+        .posts, .archived-posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .posts div, .archived-posts div {
+            background-color: #333;
+            height: 100px;
+        }
+        .archived-posts {
+            display: none;
+        }
+        .ib {
+            display: inline-block; /* Make it behave like a button */
+            background-color: transparent; /* Make background transparent */
+            border: none; /* Remove default border */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            padding: 10px; /* Add some padding */
+            transition: transform 0.2s; /* Smooth transformation on hover */
+        }
+        
+        .ib:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+        
+        .ib .fas {
+            font-size: 24px; /* Set icon size */
+            color: #dc3545; /* Set icon color (Bootstrap danger color) */
+        }
+        
+        /* Optional: Add focus styles for accessibility */
+        .ib:focus {
+            outline: 2px solid #dc3545; /* Add focus outline */
+        }
+        
+
+        .profile {
+            display: flex;
+            align-items: center;
+           
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 300px;
+          
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .info h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+        
+        .info p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        

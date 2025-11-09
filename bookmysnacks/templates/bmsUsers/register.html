@@ -1,0 +1,33 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+{% block title %}Registration Form{% endblock %}
+
+{% block extra_head %}
+
+<link rel="stylesheet" href="{% static 'css/user-register.css' %}" />
+
+{% endblock %}
+ 
+    {% block content %}
+<h2>Registration Form</h2>
+{% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="text" name="fname" placeholder="First Name" required>
+    <input type="text" name="lname" placeholder="Last Name" required>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="file" name="image" accept="image/*" >
+    <button type="submit">Register</button>
+    <a href="{% url 'bmsUsers:login' %}">Have Account?</a>
+
+</form>
+
+{% endblock %}
