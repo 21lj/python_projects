@@ -7,7 +7,7 @@ import numpy as np
 app = FastAPI()
 
 origins = [
-    "https://demo-analysis4sumi.onrender.com",  
+    "https://result-analysis4sumi.onrender.com",  
 ]
 app.add_middleware(
     CORSMiddleware,
