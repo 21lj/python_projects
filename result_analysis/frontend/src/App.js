@@ -3,7 +3,7 @@ import axios from "axios";
 import './App.css';
 
 function App() {
-  const API_URL = process.env.FAST_API_URL;
+  const API_URL = "https://result-fast-api.onrender.com";
   const [file, setFile] = useState(null);
   const [columns, setColumns] = useState([]);
   const [selectedCol, setSelectedCol] = useState("");
